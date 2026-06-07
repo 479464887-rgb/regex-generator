@@ -25,7 +25,16 @@ textarea:focus{outline:none;border-color:var(--accent);}
 .match{font-size:13px;margin-top:6px;}
 .match-ok{color:var(--green);}
 .match-fail{color:var(--red);}
-</style></head><body>
+/* 响应式设计 */
+@media (max-width: 768px) {
+  body { padding: 12px; }
+  header { padding: 12px 16px; flex-direction: column; }
+  .container { max-width: 100%; padding: 0 8px; }
+  h1 { font-size: 1.5rem; }
+  textarea, input, select, button { width: 100%; }
+  .grid { grid-template-columns: 1fr; }
+  .card { padding: 12px; }
+}</style></head><body>
 <div class="header"><a href="https://devkit-tools.xyz">← DevKit</a><span style="color:var(--text2);">Regex Generator</span></div>
 <div class="container">
 <div class="left"><div class="card">
