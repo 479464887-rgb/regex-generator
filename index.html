@@ -46,6 +46,7 @@ textarea:focus{outline:none;border-color:var(--accent);}
 <div class="match" id="match-result"></div></div></div>
 </div>
 <script>
+'use strict';
 const patterns=[{name:'Email',re:'[\w.-]+@[\w.-]+\.\w{2,}',desc:'Matches email addresses'},{name:'URL',re:'https?://[\w./-]+',desc:'Matches HTTP/HTTPS URLs'},{name:'Phone (US)',re:'\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}',desc:'US phone numbers'},{name:'IP Address',re:'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}',desc:'IPv4 addresses'},{name:'Date (YYYY-MM-DD)',re:'\d{4}-\d{2}-\d{2}',desc:'ISO date format'},{name:'Hex Color',re:'#[0-9a-fA-F]{6}',desc:'6-digit hex colors'},{name:'UUID',re:'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',desc:'UUID v4'},{name:'Zip Code (US)',re:'\d{5}(-\d{4})?',desc:'US ZIP codes'},{name:'Credit Card',re:'\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}',desc:'16-digit card numbers'},{name:'HTML Tag',re:'<[^>]+>',desc:'HTML tags'}];
 document.getElementById('patterns').innerHTML=patterns.map(p=>'<div class="pattern" onclick="select(''+p.re+'')">'+p.name+'<span class="desc">'+p.desc+'</span></div>').join('');
 function select(re){document.getElementById('regex').value=re;testRegex()}
