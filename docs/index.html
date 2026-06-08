@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="Common regex patterns library with test tool"><title>Regex Generator — DevKit Tools</title><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="Common regex patterns library with test tool"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y=".9em" font-size='90'>🛠</text></svg>">
+<title>Regex Generator — DevKit Tools</title><style>
 :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
@@ -17,7 +19,7 @@ textarea:focus{outline:none;border-color:var(--accent);}
 .match{font-size:13px;margin-top:6px;}
 .match-ok{color:var(--green);}
 .match-fail{color:var(--red);}
-</style></head><body>
+*:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}::selection{background:rgba(88,166,255,0.3);color:#fff}</style></head><body>
 <div class="header"><a href="https://devkit-tools.xyz">← DevKit</a><span style="color:var(--text2);">Regex Generator</span></div>
 <div class="container">
 <div class="left"><div class="card">
@@ -29,6 +31,7 @@ textarea:focus{outline:none;border-color:var(--accent);}
 <div class="match" id="match-result"></div></div></div>
 </div>
 <script>
+'use strict';
 const patterns=[{name:'Email',re:'[\w.-]+@[\w.-]+\.\w{2,}',desc:'Matches email addresses'},{name:'URL',re:'https?://[\w./-]+',desc:'Matches HTTP/HTTPS URLs'},{name:'Phone (US)',re:'\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}',desc:'US phone numbers'},{name:'IP Address',re:'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}',desc:'IPv4 addresses'},{name:'Date (YYYY-MM-DD)',re:'\d{4}-\d{2}-\d{2}',desc:'ISO date format'},{name:'Hex Color',re:'#[0-9a-fA-F]{6}',desc:'6-digit hex colors'},{name:'UUID',re:'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',desc:'UUID v4'},{name:'Zip Code (US)',re:'\d{5}(-\d{4})?',desc:'US ZIP codes'},{name:'Credit Card',re:'\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}',desc:'16-digit card numbers'},{name:'HTML Tag',re:'<[^>]+>',desc:'HTML tags'}];
 document.getElementById('patterns').innerHTML=patterns.map(p=>'<div class="pattern" onclick="select(''+p.re+'')">'+p.name+'<span class="desc">'+p.desc+'</span></div>').join('');
 function select(re){document.getElementById('regex').value=re;testRegex()}

@@ -53,4 +53,9 @@ function select(re){document.getElementById('regex').value=re;testRegex()}
 document.getElementById('regex').addEventListener('input',testRegex);
 document.getElementById('test-text').addEventListener('input',testRegex);
 function testRegex(){const re=document.getElementById('regex').value;const t=document.getElementById('test-text').value;const el=document.getElementById('match-result');if(!re){el.textContent='';return}try{const r=new RegExp(re,'g');const matches=t.match(r);if(matches){el.innerHTML='<span class="match-ok">✓ '+matches.length+' match(es):</span> '+matches.join(', ')}else{el.innerHTML='<span class="match-fail">✗ No matches</span>'}}catch(e){el.innerHTML='<span class="match-fail">Invalid regex: '+e.message+'</span>'}}
-</script></body></html>
+</script>  <footer style="padding:16px 24px;border-top:1px solid #21262d;text-align:center;font-size:12px;color:#484f58">
+    <a href="https://devkit-tools.xyz" style="color:#58a6ff;text-decoration:none;margin:0 8px">DevKit Tools</a>
+    <a href="https://devkit-tools.xyz/privacy.html" style="color:#58a6ff;text-decoration:none;margin:0 8px">Privacy</a>
+    <a href="https://devkit-tools.xyz/terms.html" style="color:#58a6ff;text-decoration:none;margin:0 8px">Terms</a>
+  </footer>
+</body></html>
